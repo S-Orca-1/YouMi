@@ -51,3 +51,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f'{self.full_name} {self.phone}'
+
+
+class Session(models.Model):
+    user = models.ForeignKey(User, models.CASCADE, 'session', limit_choices_to={'is_psychologist': False})
+    psychologist = models.ForeignKey(User, models.SET_NULL, 'session_psy', null=True, blank=True,
+                                     limit_choices_to={'is_psychologist': True})
+    data = models.DateTimeField()
+
+
+class PsychologistTime(models.Model):
+    day = models.DateField()
+    start = models.TimeField()
+    end = models.TimeField()
