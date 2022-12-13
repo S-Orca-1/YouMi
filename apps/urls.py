@@ -5,4 +5,5 @@ urlpatterns = [
     path('webinar/', include('webinar.urls')),
     path('user/', include('user.urls')),
     path('rate/', include('rate.urls')),
+    path('psychologist/', include('psychologist.urls')),
 ]
